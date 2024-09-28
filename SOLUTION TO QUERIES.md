@@ -1,51 +1,50 @@
 
 SELECT AVG(grade) AS avg_grade FROM Enrollments;
-![370382188-67ed020d-56c3-4b38-8e39-510fb3175a9b](https://github.com/user-attachments/assets/513e946f-e4a8-4f2e-b6fb-b3cd0a0f6616)
+![SQL 2 1](https://github.com/user-attachments/assets/aa2f973a-ad45-4272-9c09-32a5d8a09abb)
 
 
 
 SELECT s.name, c.course_name FROM Students s JOIN Enrollments e ON s.student_id = e.student_id JOIN Courses c ON e.course_id = c.course_id;
-![370383293-32dd5d74-854d-48cb-8cd4-3bf89628e9cf](https://github.com/user-attachments/assets/3b0757ac-b913-4295-90bd-fd7b2d56de33)
+![SQL 2 2](https://github.com/user-attachments/assets/26784d9f-d3e2-4577-b06f-e83c9ea9ac2e)
 
 
 
 SELECT grade_level, COUNT(*) AS student_count FROM Students GROUP BY grade_level;
-![370384189-038900be-852f-42e9-9a37-e420fef8bc86](https://github.com/user-attachments/assets/1ddf89de-1867-4c9d-874f-b4883864769c)
-
+![SQL 2 3](https://github.com/user-attachments/assets/9876b824-4dc5-4e4d-b862-170e5924c000)
 
 
 SELECT c.course_name, MAX(e.grade) AS max_grade FROM Enrollments e JOIN Courses c ON e.course_id = c.course_id GROUP BY c.course_name;
+![SQL 2 4](https://github.com/user-attachments/assets/4a97ac17-1c71-4587-b829-c6477d000d6b)
 
-![370384647-edc0663c-155a-4f7a-8380-ef5e2a642631](https://github.com/user-attachments/assets/7300103f-3df4-44a9-b0c2-cdabb06614d5)
 
 
 SELECT AVG(e.grade) AS avg_grade FROM Enrollments e JOIN Students s ON e.student_id = s.student_id WHERE s.grade_level = 3;
-![370384845-76a7e701-0bb6-4842-87e2-3652fa28a080](https://github.com/user-attachments/assets/eecac9cf-acdc-406e-8aab-ef07dbfdf782)
+![SQL 2 5](https://github.com/user-attachments/assets/4c6d916f-2e34-44d2-90d5-e57953e857fe)
 
 
 
 SELECT s.name, c.course_name, c.credits FROM Students s JOIN Enrollments e ON s.student_id = e.student_id JOIN Courses c ON e.course_id = c.course_id;
-![370385834-9b312798-07a0-44b5-b5b4-e690258c8918](https://github.com/user-attachments/assets/72634a31-2712-4f13-9a62-2254953b79bf)
+![SQL 2 6](https://github.com/user-attachments/assets/9f22e094-27e6-46e8-af92-cd6a3850b53f)
 
 
 
 SELECT c.course_name, AVG(e.grade) AS avg_grade FROM Enrollments e JOIN Courses c ON e.course_id = c.course_id GROUP BY c.course_name HAVING AVG(e.grade) > 3.0;
-![370386026-24cd5c6b-ce64-44a9-bd68-aeb3ac632863](https://github.com/user-attachments/assets/81ce1099-ccca-4722-b908-cef2bd447ada)
+![SQL 2 7](https://github.com/user-attachments/assets/d5b7103b-d4f8-4ea5-9601-8cdb58249c29)
 
 
 
 SELECT DISTINCT s.name FROM Students s WHERE NOT EXISTS ( SELECT 1 FROM Enrollments e WHERE e.student_id = s.student_id AND e.grade = 4.0
 
 );
-![370386698-0e0ab676-875f-4abf-bff2-47d7c561dd6a](https://github.com/user-attachments/assets/86632b6e-6763-4ef4-8317-80210ac1f3ce)
+![SQL 2 8](https://github.com/user-attachments/assets/647ba38c-10b0-4f5e-9027-ac8fda5506cb)
 
 
 
 SELECT s.name FROM Students s JOIN Enrollments e ON s.student_id = e.student_id GROUP BY s.name HAVING AVG(e.grade) > (SELECT AVG(grade) FROM Enrollments);
-![370386944-ea70a511-a7b7-497b-b735-9eaa569fbd5c](https://github.com/user-attachments/assets/f8494419-3215-4daf-8434-eff1c1e8f220)
+![SQL 2 9](https://github.com/user-attachments/assets/f39cb02b-8509-4083-9802-183e3f9b37f4)
 
 
 
 SELECT s.name, COUNT(e.course_id) AS total_courses, AVG(e.grade) AS avg_grade FROM Students s JOIN Enrollments e ON s.student_id = e.student_id GROUP BY s.name;
-![370387328-e9babd50-7e8c-426d-8232-b2472cddab87](https://github.com/user-attachments/assets/13a9506d-1f34-456c-816f-ba69d2066752)
+![SQL 2 10](https://github.com/user-attachments/assets/3d854837-1f0e-4c49-8669-b04319f1f149)
 
